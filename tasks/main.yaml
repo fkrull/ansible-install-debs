@@ -4,13 +4,13 @@
     state: directory
     path: '{{ install_debs_cache_dir }}'
 
-- name: install-debs - copy debs
+- name: '{{ item | basename }} - copy'
   copy:
     src: '{{ item }}'
     dest: '{{ install_debs_cache_dir }}/'
   with_items: '{{ install_debs }}'
 
-- name: install-debs - install
+- name: '{{ item | basename }} - install'
   become: true
   apt:
     state: present
