@@ -1,0 +1,18 @@
+---
+- name: install-debs - create debs cache
+  file:
+    state: directory
+    path: '{{ install_debs_cache_dir }}'
+
+- name: install-debs - copy debs
+  copy:
+    src: '{{ item }}'
+    dest: '{{ install_debs_cache_dir }}/'
+  with_items: '{{ install_debs }}'
+
+- name: install-debs - install
+  become: true
+  apt:
+    state: present
+    deb: '{{ install_debs_cache_dir }}/{{ item | basename }}'
+  with_items: '{{ install_debs }}'

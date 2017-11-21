@@ -1,0 +1,17 @@
+galaxy_info:
+  author: Felix Krull
+  description: copy and install some loose debs
+  license: 2-clause BSD
+  min_ansible_version: 2.2
+  platforms:
+    - name: Ubuntu
+      versions: [all]
+    - name: Debian
+      versions: [all]
+  galaxy_tags:
+    - debs
+    - apt
+    - debian
+    - ubuntu
+    - package
+dependencies: []
